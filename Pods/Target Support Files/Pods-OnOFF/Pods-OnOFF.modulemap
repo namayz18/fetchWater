@@ -1,0 +1,6 @@
+framework module Pods_OnOFF {
+  umbrella header "Pods-OnOFF-umbrella.h"
+
+  export *
+  module * { export * }
+}
