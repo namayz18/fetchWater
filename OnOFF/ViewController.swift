@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     var ref: DatabaseReference!
     var value: Int!
     //MARK: Outlets
+    
+    @IBOutlet weak var powerView: UIView!
     @IBOutlet weak var device: UILabel!
     @IBOutlet weak var `switch`: UISwitch!
     //MARK: VC life
@@ -36,11 +38,13 @@ class ViewController: UIViewController {
     func on() {
         self.device.text = "ON"
         self.switch.isOn = true
+        self.powerView.isHidden = false
     }
     //MARK: Device is off
     func off() {
         self.device.text = "OFF"
         self.switch.isOn = false
+        self.powerView.isHidden = true
     }
     //MARK: Switch action
     @IBAction func `switch`(_ sender: UISwitch) {
@@ -56,6 +60,17 @@ class ViewController: UIViewController {
     func setDevice() {
         self.ref.child("device").setValue(["value": value])
     }
+    
+    @IBAction func btn(_ sender: UIButton) {
+        if powerView.isHidden == true {
+            value = 1
+            setDevice()
+        }else{
+            value = 0
+            setDevice()
+        }
+    }
+    
     
 
 
